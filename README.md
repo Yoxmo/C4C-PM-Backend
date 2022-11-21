@@ -13,7 +13,7 @@ Students will write code to control the ghosts. They will learn the difference b
 1. Open the URL given by Node in your browser (e.g., http://localhost:8080)
 
 ## Deployment
-1. `https://github.com/Code4Community/pac-man`
+> `https://github.com/Code4Community/pac-man`
 
 ## Contribution Policy
 This project is closed to outside contributions while it is in active development.
