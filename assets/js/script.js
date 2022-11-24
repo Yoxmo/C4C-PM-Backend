@@ -184,6 +184,13 @@ function getAll(){
         return res.json();
     })
     .then((data) => {
+
+        var olddata = document.getElementById('pac-lead').getElementsByTagName('li');
+
+        Array.from(olddata).forEach(function (element) {
+            element.remove();
+        });
+
        const entries = Object.entries(data);
        entries.forEach((users)=>{
         const node = document.querySelector('#pac-lead');

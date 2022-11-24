@@ -200,6 +200,10 @@ app.get('/', (req, res) => {
    res.sendFile(__dirname + '/static/index.html');
 });
 
+app.get('/pacman', (req, res) => {
+   res.sendFile(__dirname + '/static/pacman.html');
+});
+
 app.get('/account', (req, res) => {
    res.sendFile(__dirname + '/static/account.html');
 });
