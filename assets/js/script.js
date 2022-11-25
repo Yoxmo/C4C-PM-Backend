@@ -162,12 +162,9 @@ if(delet) {
             return res.json();
         })
         .then((data) => {
-        if (data.result == '[*] Deleted User...' || data.result == "[*] Complete..") {
-            localStorage.logged_in = false;
-            window.location.reload();
-        } else{
-            alert(data.result);
-        }
+        console.log(data);
+        localStorage.logged_in = false;
+        window.location.reload();
     });
     });
 }
@@ -217,17 +214,18 @@ function getAll(){
     });
 }
 
-function turnOn(id) {
-    if(id = 'lead'){
+function turnOn(eid) {
+
+    if(eid == 'lead'){
         getAll();
     }
 
-    document.getElementsByClassName('container')[0].style.display = 'none';
-    document.getElementById(id).style.display = '';
+    document.getElementsByClassName('xcontainer')[0].style.display = 'none';
+    document.getElementById(eid).style.display = '';
 }
 
 function turnOff(id) {
-    document.getElementsByClassName('container')[0].style = '';
+    document.getElementsByClassName('xcontainer')[0].style = '';
     document.getElementById(id).style.display = 'none';
 }
 
@@ -284,17 +282,24 @@ function saveCode() {
     return code
 }
 
-function chechLogin(status, path) {
-    var status =  localStorage.getItem('logged_in');
-    var path = window.location.pathname;
+function chechLogin() {
+    let status = localStorage.logged_in;
+    let path = window.location.pathname;
+
+    if(status == null){
+        localStorage.logged_in = false;
+        status = 'false';
+    }
 
     if(status == 'true'){
         if (path == '/login' || path == '/register') {
             window.location.replace('/');
-        } else if(path == '/'){
+        } else if(path == '/pacman'){
+            document.getElementById('loginc').style.display = '';
             loadcode(localStorage.username);
             console.log('[*] Current path: [ -< Home >- ]');
         } else if(path == '/account'){
+            document.getElementById('loginc').style.display = '';
             fetch('/code', {
                 method: 'POST',
                 headers: {
@@ -316,6 +321,7 @@ function chechLogin(status, path) {
             document.querySelector("#user").value = localStorage.username;
         }
         else {
+            document.getElementById('loginc').style.display = '';
             console.log('[*] Current path: '+path);
         }
     } else{
@@ -327,7 +333,8 @@ function chechLogin(status, path) {
     }
 }
 
-chechLogin()
+chechLogin();
+
 
 // function music(onf) {
 // 	document.getElementById("myAudio").play(); 

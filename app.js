@@ -69,7 +69,7 @@ function createUser(username, pass) {
             console.log("[-] Creating User...");
 
             const person = new Promise((resolve, reject) => {
-               var code = `        Welcome to C4C - PacMan [ ${username} ].\nHit the instruction button on your left to learn more!`
+               var code = `Welcome to C4C PacMan\n     [ ${username} ].\nHit the instruction\n   button on your\nleft to learn more!`
                var user = new User({
                   name: username,
                   pass: pass,
@@ -198,6 +198,10 @@ console.log(db);
 
 app.get('/', (req, res) => {
    res.sendFile(__dirname + '/static/index.html');
+});
+
+app.get('/logout', (req, res) => {
+   res.sendFile(__dirname + '/static/logout.html');
 });
 
 app.get('/pacman', (req, res) => {
@@ -619,7 +623,7 @@ app.get('*', function(req, res) {
 // ===============[ V ]=============== //
 
 
-app.listen(8080, () => {
+app.listen(8080,'0.0.0.0', () => {
    console.clear()
    console.log(`
     ▐▓█▀▀▀▀▀▀▀▀▀█▓▌░▄▄▄▄▄░
