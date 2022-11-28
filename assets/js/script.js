@@ -7,6 +7,7 @@
     [========================]
 
 */
+
 var login = document.querySelector('#login');
 var regis = document.querySelector('#register');
 var updat = document.querySelector('#update');
@@ -169,7 +170,7 @@ if(delet) {
     });
 }
 
-function getAll(){
+function getAllPac(){
     fetch('/users', {
         method: 'GET',
         headers: {
@@ -214,10 +215,56 @@ function getAll(){
     });
 }
 
+function getAllGhost(){
+    fetch('/users', {
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer abcdxyz',
+            'Content-Type': 'application/json',
+        },
+    })
+    .then((res) => {
+        return res.json();
+    })
+    .then((data) => {
+
+        var olddata = document.getElementById('ghost-lead').getElementsByTagName('li');
+
+        Array.from(olddata).forEach(function (element) {
+            element.remove();
+        });
+
+       const entries = Object.entries(data);
+       entries.forEach((users)=>{
+        const node = document.querySelector('#ghost-lead');
+
+        var listItem = document.createElement('li');
+        var listAttr = document.createElement('pe');
+        var listScore = document.createElement('small');
+
+        var number = Math.floor(Math.random() * 200) + Math.floor(Math.random() * 200);
+
+        listItem.setAttribute('style','margin: 15px');
+        listAttr.setAttribute('style','margin-left: 15px;');
+        listScore.setAttribute('style', 'float: right; margin-right: 15px;');
+
+        listAttr.innerText = users[0];
+        listScore.innerText = number;
+
+        listItem.appendChild(listAttr);
+        listItem.appendChild(listScore);
+
+        node.appendChild(listItem);
+        //console.log(users[1]);
+       });
+    });
+}
+
 function turnOn(eid) {
 
     if(eid == 'lead'){
-        getAll();
+        getAllPac();
+        getAllGhost();
     }
 
     document.getElementsByClassName('xcontainer')[0].style.display = 'none';
