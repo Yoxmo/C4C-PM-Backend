@@ -199,7 +199,7 @@ function getAllPac(){
 
         var number = Math.floor(Math.random() * 200) + Math.floor(Math.random() * 200);
 
-        listItem.setAttribute('style','margin: 15px');
+        listItem.setAttribute('style','margin: 15px;border: 1.75px solid whitesmoke;');
         listAttr.setAttribute('style','margin-left: 15px;');
         listScore.setAttribute('style', 'float: right; margin-right: 15px;');
 
@@ -244,7 +244,7 @@ function getAllGhost(){
 
         var number = Math.floor(Math.random() * 200) + Math.floor(Math.random() * 200);
 
-        listItem.setAttribute('style','margin: 15px');
+        listItem.setAttribute('style','margin: 15px; border: 1.75px solid whitesmoke;');
         listAttr.setAttribute('style','margin-left: 15px;');
         listScore.setAttribute('style', 'float: right; margin-right: 15px;');
 
